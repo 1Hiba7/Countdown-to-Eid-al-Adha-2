@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>عد تنازلي لعيد الأضحى</title>
+<style>
+  body {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    /* تدرج لوني للخلفية */
+    background: linear-gradient(to left, #FFFFFF 0%, #E0E0FF 50%, #FFE0E0 100%);
+  }
+  #countdown {
+    font-size: 2em;
+  }
+  .label {
+    margin-top: 0.5em;
+    font-size: 1.5em;
+    color: #333;
+  }
+  #eid-image {
+    display: none;
+    margin-top: 2em;
+  }
+</style>
+<script>
+// تعيين تاريخ عيد الأضحى
+var countDownDate = new Date("Jun 16, 2024 00:00:00").getTime();
+
+// تحديث العد التنازلي كل ثانية
+var x = setInterval(function() {
+
+  // الحصول على تاريخ ووقت اليوم
+  var now = new Date().getTime();
+
+  // العثور على الفترة الزمنية بين الآن وتاريخ العد التنازلي
+  var distance = countDownDate - now;
+
+  // حساب الأيام والساعات والدقائق والثواني
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // عرض النتيجة في العنصر ذو الid="countdown"
+  document.getElementById("days").innerText = days + " أيام ";
+  document.getElementById("hours").innerText = hours + " ساعات ";
+  document.getElementById("minutes").innerText = minutes + " دقائق ";
+  document.getElementById("seconds").innerText = seconds + " ثواني ";
+
+  // إذا انتهى العد التنازلي، عرض الصورة
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").style.display = "none";
+    document.getElementById("eid-image").style.display = "block";
+  }
+}, 1000);
+</script>
+</head>
+<body>
+
+<h1>العد التنازلي لعيد الأضحى</h1>
+<div id="countdown">
+  <div id="days" class="label"></div>
+  <div id="hours" class="label"></div>
+  <div id="minutes" class="label"></div>
+  <div id="seconds" class="label"></div>
+</div>
+<!-- يرجى استبدال 'رابط_صورتك_هنا' بالرابط الفعلي لصورتك -->
+<img id="eid-image" src="رابط_صورتك_هنا" alt="عيد أضحى مبارك">
+<p>عمل الطالبة: هبة كتانة</p>
+
+</body>
+</html>
